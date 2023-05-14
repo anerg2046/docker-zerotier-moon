@@ -43,7 +43,7 @@ jobs:
           token: ${{ secrets.REPO_TOKEN }}
 
       - name: Trigger build
-        if: env.LAST_TAG != steps.getVersion.outputs.release
+        if: steps.getMyTag.outputs.LAST_TAG != steps.getVersion.outputs.release
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.REPO_TOKEN }}
