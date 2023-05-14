@@ -1,4 +1,4 @@
-name: ZeroTierOne Version Update Checker
+name: ZeroTierOne Version Checker
 
 env:
   REPO_NAME: zerotier/ZeroTierOne
@@ -24,6 +24,7 @@ jobs:
           excludes: "prerelease, draft"
 
       - name: Get My Tag
+        id: getMyTag
         uses: rmeneely/git-last-tag@v1
 
       - name: Echo ZeroTierOne Version
@@ -32,10 +33,10 @@ jobs:
 
       - name: Echo My Tag
         run: |
-          echo ${{ env.LAST_TAG }}
+          echo ${{ steps.getMyTag.outputs.LAST_TAG }}
 
       - name: Compare Version And Add Tag
-        if: env.LAST_TAG != steps.getVersion.outputs.release
+        if: steps.getMyTag.outputs.LAST_TAG != steps.getVersion.outputs.release
         uses: negz/create-tag@v1
         with:
           version: ${{ steps.getVersion.outputs.release }}
