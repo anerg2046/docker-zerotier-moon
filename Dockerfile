@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:latest
 
 LABEL maintainer="Coeus <r.anerg@gmail.com>"
 
