@@ -1,7 +1,7 @@
 name: ZeroTierOne Version Checker
 
 env:
-  REPO_NAME: zerotier/ZeroTierOne
+  REPO_NAME: anerg2046/docker-zerotier-moon
 
 on:
   workflow_dispatch:
