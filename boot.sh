@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# usage ./startup.sh -4 1.2.3.4 -6 2001:abcd:abcd::1 -p 9993
+# usage ./boot.sh -4 1.2.3.4 -6 2001:abcd:abcd::1 -p 9993
 
 moon_port=9993 # default ZeroTier moon port
 
