@@ -1,4 +1,4 @@
-FROM ubuntu:23.04
+FROM ubuntu
 
 LABEL maintainer="Coeus <r.anerg@gmail.com>"
 
