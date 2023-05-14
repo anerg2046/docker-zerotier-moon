@@ -23,6 +23,8 @@ jobs:
       - name: Get My Tag
         id: getMyTag
         uses: rmeneely/git-last-tag@v1
+        with:
+          tag_pattern: '[0-9]*'
 
       - name: Echo ZeroTierOne Version
         run: |
@@ -30,17 +32,17 @@ jobs:
 
       - name: Echo My Tag
         run: |
-          echo ${{ steps.getMyTag.outputs.LAST_TAG }}
+          echo ${{ steps.getMyTag.outputs.last_tag }}
 
       - name: Compare Version And Add Tag
-        if: steps.getMyTag.outputs.LAST_TAG != steps.getVersion.outputs.release
+        if: steps.getMyTag.outputs.last_tag != steps.getVersion.outputs.release
         uses: negz/create-tag@v1
         with:
           version: ${{ steps.getVersion.outputs.release }}
           token: ${{ secrets.REPO_TOKEN }}
 
       - name: Trigger build
-        if: steps.getMyTag.outputs.LAST_TAG != steps.getVersion.outputs.release
+        if: steps.getMyTag.outputs.last_tag != steps.getVersion.outputs.release
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.REPO_TOKEN }}
